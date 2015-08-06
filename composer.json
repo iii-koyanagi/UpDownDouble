@@ -1,0 +1,24 @@
+{
+    "name": "updown/double",
+    "description":" ",
+    "keywords":[
+    ],
+    "license": "BSD-3-Clause",
+    "autoload":{
+        "psr-4":{
+            "UpDown\\Double\\": "src/"
+        }
+    },
+    "autoload-dev":{
+        "psr-4":{
+            "UpDown\\Double\\": ["tests/", "tests/Fake"]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "0.1.x-dev"
+        }
+    }
+}
