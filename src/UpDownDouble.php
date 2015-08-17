@@ -25,6 +25,7 @@ class UpDownDouble
         }
         else {
 //            var_dump('奇数');
+            $this->checkTwoDigitOfOddData($data);
         }
     }
 
@@ -33,6 +34,14 @@ class UpDownDouble
         $divided_data = $data / 2;
         $this->addPushCounter();
         $this->setCurrentVal($divided_data);
+    }
+
+    public function checkTwoDigitOfOddData($data)
+    {
+        $str_data = (string)$data;
+        $two_digit = substr($str_data, -2,1);
+
+        var_dump($two_digit);
     }
 
     public function addPushCounter()
