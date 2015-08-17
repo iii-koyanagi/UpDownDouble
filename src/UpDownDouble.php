@@ -15,10 +15,11 @@ class UpDownDouble
     {
         $this->setcurrentVal($data);
 
-        for ($i = 1; $i <= 20; $i++) {
-        $this->chooseExec($this->current_val);
-        var_dump($this->current_val);
+        while ($this->current_val != 0) {
+            $this->chooseExec($this->current_val);
         }
+
+        var_dump($this->push_counter);
     }
 
     public function chooseExec($data)
@@ -28,7 +29,13 @@ class UpDownDouble
             $this->divideByTwo($data);
         }
         elseif($result === 'odd' ) {
-            $this->checkTwoDigitOfOddData($data);
+            if ($data >= 10) {
+                $this->checkTwoDigitOfOddData($data);
+            }
+
+            else {
+                $this->checkOneDigitOfOddData($data);
+            }
         }
     }
 
@@ -71,6 +78,30 @@ class UpDownDouble
             }
             elseif ($one_digit_result === '3,7') {
                 $this->minusOne($data);
+            }
+        }
+    }
+
+    public function checkOneDigitOfOddData($data)
+    {
+        $result = $this->oddOrEven($data);
+        $one_digit_result = $this->checkOneDigit($data);
+
+        if($result === 'even') {
+            if ($one_digit_result === '1,5,9') {
+                $this->plusOne($data);
+
+            }
+            elseif ($one_digit_result === '3,7') {
+                $this->minusOne($data);
+            }
+        }
+        elseif($result === 'odd' ) {
+            if ($one_digit_result === '1,5,9') {
+                $this->minusOne($data);
+            }
+            elseif ($one_digit_result === '3,7') {
+                $this->plusOne($data);
             }
         }
     }
