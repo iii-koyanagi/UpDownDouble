@@ -22,7 +22,6 @@ class UpDownDouble
     public function chooseExec($data)
     {
         $result = $this->oddOrEven($data);
-
         if($result === 'even') {
             $this->divideByTwo($data);
         }
@@ -54,25 +53,36 @@ class UpDownDouble
         $two_digit = $this->getDigit($data, 2);
         $one_digit = $this->getDigit($data, 1);
         $result = $this->oddOrEven($two_digit);
+        $one_digit_result = $this->checkOneDigit($one_digit);
 
         if($result === 'even') {
-            if (in_array($one_digit, array(1, 5, 9))) {
+            if ($one_digit_result === '1,5,9') {
                 $this->minusOne($data);
             }
-
-            elseif (in_array($one_digit, array(3, 7))) {
+            elseif ($one_digit_result === '3,7') {
                 $this->plusOne($data);
             }
         }
         elseif($result === 'odd' ) {
-            if (in_array($one_digit, array(1, 5, 9))) {
+            if ($one_digit_result === '1,5,9') {
                 $this->plusOne($data);
             }
-
-            elseif (in_array($one_digit, array(3, 7))) {
+            elseif ($one_digit_result === '3,7') {
                 $this->minusOne($data);
             }
         }
+    }
+
+    public function checkOneDigit($one_digit)
+    {
+        $one_digit_result = null;
+        if (in_array($one_digit, array(1, 5, 9))) {
+            $one_digit_result = '1,5,9';
+        }
+        elseif (in_array($one_digit, array(3, 7))) {
+            $one_digit_result = '3,7';
+        }
+        return $one_digit_result;
     }
 
     public function getDigit($data, $digit_number)//$digit_numberは桁数
