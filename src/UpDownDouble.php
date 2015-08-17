@@ -151,4 +151,10 @@ class UpDownDouble
     {
         $this->current_val = $data;
     }
+
+    public function reset()
+    {
+        $this->push_counter = 0;
+        $this->current_val = 0;
+    }
 }
