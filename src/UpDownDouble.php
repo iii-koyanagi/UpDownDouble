@@ -14,21 +14,32 @@ class UpDownDouble
     public function app($data)
     {
         $this->setcurrentVal($data);
-        $this->oddOrEven($data);
+        $this->chooseExec($data);
 
         var_dump($this->current_val);
+    }
+
+    public function chooseExec($data)
+    {
+        $result = $this->oddOrEven($data);
+
+        if($result === 'even') {
+            $this->divideByTwo($data);
+        }
+        elseif($result === 'odd' ) {
+            $this->checkTwoDigitOfOddData($data);
+        }
     }
 
     public function oddOrEven($data)
     {
         if($data % 2 == 0) {
-//            var_dump('偶数');
-            $this->divideByTwo($data);
+            $result = 'even';//偶数
         }
         else {
-//            var_dump('奇数');
-            $this->checkTwoDigitOfOddData($data);
+            $result = 'odd';//奇数
         }
+        return $result;
     }
 
     public function divideByTwo($data)
@@ -42,9 +53,9 @@ class UpDownDouble
     {
         $two_digit = $this->getDigit($data, 2);
         $one_digit = $this->getDigit($data, 1);
+        $result = $this->oddOrEven($two_digit);
 
-        if($two_digit % 2 == 0) {
-//            var_dump('偶数');
+        if($result === 'even') {
             if (in_array($one_digit, array(1, 5, 9))) {
                 $this->minusOne($data);
             }
@@ -53,8 +64,7 @@ class UpDownDouble
                 $this->plusOne($data);
             }
         }
-        else {
-//            var_dump('奇数');
+        elseif($result === 'odd' ) {
             if (in_array($one_digit, array(1, 5, 9))) {
                 $this->plusOne($data);
             }
@@ -70,7 +80,6 @@ class UpDownDouble
         $str_data = (string)$data;
         $str_digit = substr($str_data, -$digit_number, 1);
         $digit = (int)$str_digit;
-
         return $digit;
     }
 
