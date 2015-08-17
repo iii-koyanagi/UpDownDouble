@@ -14,12 +14,10 @@ class UpDownDouble
     public function app($data)
     {
         $this->setcurrentVal($data);
-
         while ($this->current_val != 0) {
             $this->chooseExec($this->current_val);
         }
-
-        var_dump($this->push_counter);
+        return $this->push_counter;
     }
 
     public function chooseExec($data)
@@ -31,6 +29,10 @@ class UpDownDouble
         elseif($result === 'odd' ) {
             if ($data >= 10) {
                 $this->checkTwoDigitOfOddData($data);
+            }
+
+            elseif ($data === 3) {
+                $this->minusOne($data);
             }
 
             else {

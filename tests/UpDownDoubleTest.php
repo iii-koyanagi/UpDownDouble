@@ -29,6 +29,6 @@ class UpDownDoubleTest extends \PHPUnit_Framework_TestCase
 
     public function testApp()
     {
-        $this->skeleton->app(27);
+        $this->skeleton->app(13);
     }
 }
