@@ -8,6 +8,9 @@ namespace UpDown\Double;
 
 class UpDownDouble
 {
+    const ONE_FIVE_NINE = '1,5,9';
+    const THREE_SEVEN = '3,7';
+    
     private $push_counter = 0;
     private $current_val;
 
