@@ -9,20 +9,39 @@ namespace UpDown\Double;
 class UpDownDouble
 {
     private $push_counter = 0;
-    private $current_val = 0;
+    private $current_val;
 
     public function app($data)
     {
+        $this->setcurrentVal($data);
         $this->oddOrEven($data);
     }
 
     public function oddOrEven($data)
     {
         if($data % 2 == 0) {
-            var_dump('偶数');
+//            var_dump('偶数');
+            $this->divideByTwo($data);
         }
         else {
-            var_dump('奇数');
+//            var_dump('奇数');
         }
+    }
+
+    public function divideByTwo($data)
+    {
+        $divided_data = $data / 2;
+        $this->addPushCounter();
+        $this->setCurrentVal($divided_data);
+    }
+
+    public function addPushCounter()
+    {
+        $this->push_counter += 1;
+    }
+
+    public function setCurrentVal($data)
+    {
+        $this->current_val = $data;
     }
 }
