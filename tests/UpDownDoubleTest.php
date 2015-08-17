@@ -26,4 +26,9 @@ class UpDownDoubleTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('\UpDown\Double\Exception\LogicException');
         throw new Exception\LogicException;
     }
+
+    public function testApp()
+    {
+        $this->skeleton->app(12);
+    }
 }
