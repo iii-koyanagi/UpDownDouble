@@ -112,10 +112,13 @@ class UpDownDouble
 
     public function checkOneDigit($one_digit)
     {
-        if (in_array($one_digit, array(1, 5, 9))) {
+        $one_five_nine_arr = explode(",", self::ONE_FIVE_NINE);
+        $three_seven_arr = explode(",", self::THREE_SEVEN);
+
+        if (in_array($one_digit, $one_five_nine_arr)) {
             $one_digit_result = self::ONE_FIVE_NINE;
         }
-        elseif (in_array($one_digit, array(3, 7))) {
+        elseif (in_array($one_digit, $three_seven_arr)) {
             $one_digit_result = self::THREE_SEVEN;
         }
         return $one_digit_result;
