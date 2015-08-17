@@ -20,4 +20,10 @@ class UpDownDoubleTest extends \PHPUnit_Framework_TestCase
         $actual = $this->skeleton;
         $this->assertInstanceOf('\UpDown\Double\UpDownDouble', $actual);
     }
+
+    public function testException()
+    {
+        $this->setExpectedException('\UpDown\Double\Exception\LogicException');
+        throw new Exception\LogicException;
+    }
 }
