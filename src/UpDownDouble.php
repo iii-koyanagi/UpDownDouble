@@ -39,7 +39,8 @@ class UpDownDouble
     public function checkTwoDigitOfOddData($data)
     {
         $str_data = (string)$data;
-        $two_digit = substr($str_data, -2,1);
+        $two_str_digit = substr($str_data, -2,1);
+        $two_digit = (int)$two_str_digit;
 
         var_dump($two_digit);
     }
