@@ -70,20 +70,10 @@ class UpDownDouble
         $one_digit_result = $this->checkOneDigit($one_digit);
 
         if($result === 'even') {
-            if ($one_digit_result === '1,5,9') {
-                $this->minusOne($data);
-            }
-            elseif ($one_digit_result === '3,7') {
-                $this->plusOne($data);
-            }
+            $this->patternA($one_digit_result, $data);
         }
         elseif($result === 'odd' ) {
-            if ($one_digit_result === '1,5,9') {
-                $this->plusOne($data);
-            }
-            elseif ($one_digit_result === '3,7') {
-                $this->minusOne($data);
-            }
+            $this->patternB($one_digit_result, $data);
         }
     }
 
@@ -93,21 +83,30 @@ class UpDownDouble
         $one_digit_result = $this->checkOneDigit($data);
 
         if($result === 'even') {
-            if ($one_digit_result === '1,5,9') {
-                $this->plusOne($data);
-
-            }
-            elseif ($one_digit_result === '3,7') {
-                $this->minusOne($data);
-            }
+            $this->patternB($one_digit_result, $data);
         }
         elseif($result === 'odd' ) {
-            if ($one_digit_result === '1,5,9') {
-                $this->minusOne($data);
-            }
-            elseif ($one_digit_result === '3,7') {
-                $this->plusOne($data);
-            }
+            $this->patternA($one_digit_result, $data);
+        }
+    }
+
+    public function patternA($val, $data)
+    {
+        if ($val === '1,5,9') {
+            $this->minusOne($data);
+        }
+        elseif ($val === '3,7') {
+            $this->plusOne($data);
+        }
+    }
+
+    public function patternB($val, $data)
+    {
+        if ($val === '1,5,9') {
+            $this->plusOne($data);
+        }
+        elseif ($val === '3,7') {
+            $this->minusOne($data);
         }
     }
 
