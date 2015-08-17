@@ -55,11 +55,43 @@ class UpDownDouble
         return $result;
     }
 
+    public function addPushCounter()
+    {
+        $this->push_counter += 1;
+    }
+
+    public function setCurrentVal($data)
+    {
+        $this->current_val = $data;
+    }
+
     public function divideByTwo($data)
     {
         $divided_data = $data / 2;
         $this->addPushCounter();
         $this->setCurrentVal($divided_data);
+    }
+
+    public function minusOne($data)
+    {
+        $minus_data = $data - 1;
+        $this->addPushCounter();
+        $this->setCurrentVal($minus_data);
+    }
+
+    public function plusOne($data)
+    {
+        $plus_data = $data + 1;
+        $this->addPushCounter();
+        $this->setCurrentVal($plus_data);
+    }
+
+    public function getDigit($data, $digit_number)//$digit_numberは桁数
+    {
+        $str_data = (string)$data;
+        $str_digit = substr($str_data, -$digit_number, 1);
+        $digit = (int)$str_digit;
+        return $digit;
     }
 
     public function checkTwoDigitOfOddData($data)
@@ -122,38 +154,6 @@ class UpDownDouble
             $one_digit_result = self::THREE_SEVEN;
         }
         return $one_digit_result;
-    }
-
-    public function getDigit($data, $digit_number)//$digit_numberは桁数
-    {
-        $str_data = (string)$data;
-        $str_digit = substr($str_data, -$digit_number, 1);
-        $digit = (int)$str_digit;
-        return $digit;
-    }
-
-    public function minusOne($data)
-    {
-        $minus_data = $data - 1;
-        $this->addPushCounter();
-        $this->setCurrentVal($minus_data);
-    }
-
-    public function plusOne($data)
-    {
-        $plus_data = $data + 1;
-        $this->addPushCounter();
-        $this->setCurrentVal($plus_data);
-    }
-
-    public function addPushCounter()
-    {
-        $this->push_counter += 1;
-    }
-
-    public function setCurrentVal($data)
-    {
-        $this->current_val = $data;
     }
 
     public function reset()
