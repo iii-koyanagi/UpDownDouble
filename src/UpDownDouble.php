@@ -92,32 +92,31 @@ class UpDownDouble
 
     public function patternA($val, $data)
     {
-        if ($val === '1,5,9') {
+        if ($val === self::ONE_FIVE_NINE) {
             $this->minusOne($data);
         }
-        elseif ($val === '3,7') {
+        elseif ($val === self::THREE_SEVEN) {
             $this->plusOne($data);
         }
     }
 
     public function patternB($val, $data)
     {
-        if ($val === '1,5,9') {
+        if ($val === self::ONE_FIVE_NINE) {
             $this->plusOne($data);
         }
-        elseif ($val === '3,7') {
+        elseif ($val === self::THREE_SEVEN) {
             $this->minusOne($data);
         }
     }
 
     public function checkOneDigit($one_digit)
     {
-        $one_digit_result = null;
         if (in_array($one_digit, array(1, 5, 9))) {
-            $one_digit_result = '1,5,9';
+            $one_digit_result = self::ONE_FIVE_NINE;
         }
         elseif (in_array($one_digit, array(3, 7))) {
-            $one_digit_result = '3,7';
+            $one_digit_result = self::THREE_SEVEN;
         }
         return $one_digit_result;
     }
