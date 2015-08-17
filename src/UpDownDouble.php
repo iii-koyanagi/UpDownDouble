@@ -15,6 +15,8 @@ class UpDownDouble
     {
         $this->setcurrentVal($data);
         $this->oddOrEven($data);
+
+        var_dump($this->current_val);
     }
 
     public function oddOrEven($data)
@@ -42,7 +44,44 @@ class UpDownDouble
         $two_str_digit = substr($str_data, -2,1);
         $two_digit = (int)$two_str_digit;
 
-        var_dump($two_digit);
+        $one_str_digit = substr($str_data, -1,1);
+        $one_digit = (int)$one_str_digit;
+
+        if($two_digit % 2 == 0) {
+
+//            var_dump('偶数');
+            if (in_array($one_digit, array(1, 5, 9))) {
+                $this->minusOne($data);
+            }
+
+            elseif (in_array($one_digit, array(3, 7))) {
+                $this->plusOne($data);
+            }
+        }
+        else {
+//            var_dump('奇数');
+            if (in_array($one_digit, array(1, 5, 9))) {
+                $this->plusOne($data);
+            }
+
+            elseif (in_array($one_digit, array(3, 7))) {
+                $this->minusOne($data);
+            }
+        }
+    }
+
+    public function minusOne($data)
+    {
+        $minus_data = $data - 1;
+        $this->addPushCounter();
+        $this->setCurrentVal($minus_data);
+    }
+
+    public function plusOne($data)
+    {
+        $plus_data = $data + 1;
+        $this->addPushCounter();
+        $this->setCurrentVal($plus_data);
     }
 
     public function addPushCounter()
