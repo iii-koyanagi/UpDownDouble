@@ -40,15 +40,10 @@ class UpDownDouble
 
     public function checkTwoDigitOfOddData($data)
     {
-        $str_data = (string)$data;
-        $two_str_digit = substr($str_data, -2,1);
-        $two_digit = (int)$two_str_digit;
-
-        $one_str_digit = substr($str_data, -1,1);
-        $one_digit = (int)$one_str_digit;
+        $two_digit = $this->getDigit($data, 2);
+        $one_digit = $this->getDigit($data, 1);
 
         if($two_digit % 2 == 0) {
-
 //            var_dump('偶数');
             if (in_array($one_digit, array(1, 5, 9))) {
                 $this->minusOne($data);
@@ -68,6 +63,15 @@ class UpDownDouble
                 $this->minusOne($data);
             }
         }
+    }
+
+    public function getDigit($data, $digit_number)//$digit_numberは桁数
+    {
+        $str_data = (string)$data;
+        $str_digit = substr($str_data, -$digit_number, 1);
+        $digit = (int)$str_digit;
+
+        return $digit;
     }
 
     public function minusOne($data)
