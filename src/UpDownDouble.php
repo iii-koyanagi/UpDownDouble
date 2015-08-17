@@ -14,9 +14,11 @@ class UpDownDouble
     public function app($data)
     {
         $this->setcurrentVal($data);
-        $this->chooseExec($data);
 
+        for ($i = 1; $i <= 20; $i++) {
+        $this->chooseExec($this->current_val);
         var_dump($this->current_val);
+        }
     }
 
     public function chooseExec($data)
